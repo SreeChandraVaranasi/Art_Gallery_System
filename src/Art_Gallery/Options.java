@@ -30,7 +30,7 @@ public class Options extends HttpServlet {
 		String dbName = "mydb";
 		String driver = "com.mysql.jdbc.Driver";
 		String userName = "root";
-		String password = "system";
+		String password = "12345678";
 		String query= "select * from gallery";
 		HttpSession session = request.getSession();
 		String name1=(String)session.getAttribute("l_id");

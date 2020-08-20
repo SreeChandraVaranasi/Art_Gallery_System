@@ -44,7 +44,7 @@ public class UploadPainting extends HttpServlet {
       
 
       Class.forName(driver).newInstance();  
-      conn = DriverManager.getConnection(url+dbName,"root", "system");
+      conn = DriverManager.getConnection(url+dbName,"root", "12345678");
       PreparedStatement pst =(PreparedStatement) conn.prepareStatement("insert into painting (title, year, url, type) values(?,?,?,?)");//try2 is the name of the table  
       PreparedStatement pst1 =(PreparedStatement) conn.prepareStatement("insert into painting (a_id) values(?)");//try2 is the name of the table  
 
