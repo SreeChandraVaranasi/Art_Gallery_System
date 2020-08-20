@@ -1,5 +1,4 @@
 # Art-Gallery-Management-System
-By shivani,Siri, Abhishek, vidya
 An online Art Gallery Management System in Java (JSP, JDBC) and using MySQL database.
 
 

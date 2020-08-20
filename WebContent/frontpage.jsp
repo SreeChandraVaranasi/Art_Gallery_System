@@ -19,27 +19,7 @@
 <h2>Online Art Gallery</h2>
 <div class="navbar">
   <a href="frontpage.jsp">Home</a>
-  <a href="visitorsignup.jsp">Paintings</a>
-  <a href="Exhibition.jsp">Exhibitions</a>
-  <div class="dropdown1">
-    <button class="dropbtn1">SignUp
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content1">
-      <a href="index.jsp">Artist</a>
-      <!-- <a href="#">Customer</a>
- -->    </div>
-  </div>
-  <div class="dropdown1">
-    <button class="dropbtn1">Login
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content1">
-      <a href="index1.jsp">Admin</a>
-      <!-- <a href="index1.jsp">Customer</a> -->
-      <a href="index1.jsp">Artist</a>
-    </div>
-  </div>
+  <a href ="visitorsignup.jsp">SignUp/Login</a>
 </div>
 <br>
 <br>

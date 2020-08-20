@@ -37,6 +37,10 @@
               set a password<span class="req">*</span>
             </label>
             <input type="password" name="password1" required autocomplete="off"/>
+             <select id="Choose" name="Type">
+			    <option value="artist">Artist</option>
+			    <option value="customer">Customer</option>
+ 			 </select>
           </div>
 <!-- 			<input type="submit" class="button button-block" name="submit" value="Get Started"> -->
           <button type="submit" class="button button-block"/>Get Started</button>

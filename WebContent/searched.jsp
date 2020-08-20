@@ -59,10 +59,10 @@
 <%
 
 String url = "jdbc:mysql://localhost:3306/";
-String dbName = "art_gallery";
+String dbName = "mydb";
 String driver = "com.mysql.jdbc.Driver";
 String userName = "root";
-String password = "rutuja8079";
+String password = "system";
 String type = request.getParameter("search");
 String query= "select * from painting where (type like ?)";
 /* String query2="select * from gallery where g_id in(select * from artist where email = ?)";
