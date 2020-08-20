@@ -5,29 +5,45 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="css/frontpage.css">
-<title>Select_paintings</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
+<title>Slect_paitninge</title>
+<link type="text/css" rel="stylesheet" href="css/homepage.css"/>
+
 </head>
 <!-- <h1>Online Art Gallery</h1> -->
 <body>
 <h2>Online Art Gallery</h2>
 
- <div class="navbar">
-  <a href="frontpage.jsp">Home</a>
-  <a href="About_us.jsp">About Us</a>
-   <a href="My_profile.jsp">My Profile</a>
-   <a href="Exhibition.jsp">Exhibitions</a>
-    <a href="gallery_option.jsp">Gallery options</a>
-     <a href="upload_paintings.jsp">Upload Paintings</a>
-      <a href="frontpage.jsp">Logout</a>
-      <a href="#" class="navbar1">
-      									<% HttpSession httpSession=request.getSession();
-      								out.println("hii "+httpSession.getAttribute("login1"));
-      								String a1 = (String)session.getAttribute("login1");
-      								%>
- </a>  
-      </div>
+
+ <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+        <div class="container">
+          <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a href="./" class="navbar-brand">AVSV ART GALLERY</a>
+          </div>
+          <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="My_profile.jsp">My Profile</a></li>
+              <li><a href="upload_paintings.jsp">Upload Paintings</a></li>
+              <li><a href="frontpage.jsp">Logout</a></li>
+<%--               <li><a href="#"> <% HttpSession httpSession=request.getSession();
+                String id = request.getParameter("email");
+                httpSession.setAttribute("login1",id );
+                out.println("Welcome "+httpSession.getAttribute("login1"));
+                String a = (String)httpSession.getAttribute("login1");
+%></a></li> --%>
+            </ul>
+          </nav>
+        </div>
+  </header>
+      
         <!-- <form method="post" action="upload_paintings.jsp" >  -->  
       <div class="user">
     <header class="user__header">
@@ -74,7 +90,7 @@
 try{  Class.forName(driver).newInstance(); 
 System.out.println("hhhhhhhhh");
 //System.out.println(id);
-conn = DriverManager.getConnection(url+dbName,"root", "system");
+conn = DriverManager.getConnection(url+dbName,"root", "12345678");
 if(request.getParameter("Upload")!= null){
 
   String title = request.getParameter("title");  
@@ -95,7 +111,7 @@ if(request.getParameter("Upload")!= null){
   Class.forName(driver).newInstance(); 
   
    
-  conn = DriverManager.getConnection(url+dbName,"root", "system");
+  conn = DriverManager.getConnection(url+dbName,"root", "12345678");
   PreparedStatement pst =(PreparedStatement) conn.prepareStatement("insert into painting values(?,?,?,?,?,?)");//try2 is the name of the table  
  
   
@@ -265,6 +281,10 @@ body {
     }
 }
 </style>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js'></script>
 <script>
 $('.btn').on('click', function () {
     $('.form').addClass('form--no');

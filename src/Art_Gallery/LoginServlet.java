@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
         String dbName = "mydb";
         String driver = "com.mysql.jdbc.Driver";
         String userName = "root";
-        String password = "system";
+        String password = "12345678";
         String query= "select * from login";
         try {
             Class.forName(driver).newInstance();

@@ -51,7 +51,7 @@ public class AddCustomer extends HttpServlet {
     
       Class.forName(driver).newInstance();  
 
-     conn = DriverManager.getConnection(url+dbName,"root", "system");
+     conn = DriverManager.getConnection(url+dbName,"root", "12345678");
       Statement st = conn.createStatement();
       ResultSet rs = st.executeQuery(query);
       rs.next();

@@ -48,7 +48,7 @@ public class Edit extends HttpServlet {
 		String dbName = "mydb";
 	        String driver = "com.mysql.jdbc.Driver";
 	        String userName = "root";
-	        String password = "system";
+	        String password = "12345678";
 	        String id = request.getParameter("field1");
 	        String email = request.getParameter("field22");
 	        String name = request.getParameter("field33");

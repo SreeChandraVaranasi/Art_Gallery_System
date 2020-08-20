@@ -5,45 +5,45 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>like</title>
-<link type="text/css" rel="stylesheet" href="css/frontpage.css"/>
-<link rel="shortcut icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
+<title>Customer_Page</title>
+<link type="text/css" rel="stylesheet" href="css/homepage.css"/>
 
-	<!-- Google Webfonts -->
-	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-	
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
-	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="css/magnific-popup.css">
-	<!-- Salvattore -->
-	<link rel="stylesheet" href="css/salvattore.css">
-	<!-- Theme Style -->
-	<link rel="stylesheet" href="css/style1.css">
-	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
 
 </head>
 <body>
-<div class="navbar">
-  <a href="frontpage.jsp">Home</a>
-  <a href="likes.jsp">Paintings</a>
-  <!--  <a href="My_profile.jsp">My Profile</a>
-    <a href="gallery_option.jsp">Gallery options</a>
-     <a href="upload_paintings.jsp">Upload Paintings</a> -->
-     <a href="search.jsp">Search</a>
-      <a href="frontpage.jsp">Logout</a>
-       <a href="#" class="navbar1"><% HttpSession httpSession=request.getSession();
-			String id = request.getParameter("email");
-			httpSession.setAttribute("login1",id );
-			if(id != null) {
-				out.println("hii "+httpSession.getAttribute("login1"));
-			}
-			String a = (String)httpSession.getAttribute("login1");%>
+
+    <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+        <div class="container">
+          <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a href="./" class="navbar-brand">AVSV ART GALLERY</a>
+          </div>
+          <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Your Orders</a></li>
+              <li><a href="frontpage.jsp">Logout</a></li>
+              <li><a href="#"> <% HttpSession httpSession=request.getSession();
+                String id = request.getParameter("email");
+                httpSession.setAttribute("login1",id );
+                if(id != null) {
+                    out.println("Welcome "+httpSession.getAttribute("login1"));
+                }
+                String a = (String)httpSession.getAttribute("login1");
+%></a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+
 
      
 </div>
@@ -112,7 +112,10 @@ try {
 	<!-- Salvattore -->
 	<script src="js/salvattore.min.js"></script>
 	<!-- Main JS -->
-	<script src="js/main1.js"></script>
+    <script src="js/main1.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js'></script>
+
    
 </form>
 </body>
