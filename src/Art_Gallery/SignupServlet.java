@@ -34,12 +34,8 @@ public class SignupServlet extends HttpServlet {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			Connection conn = DriverManager.getConnection(url + dbName, "root", "system");
+			Connection conn = DriverManager.getConnection(url + dbName, "root", "12345678");
 			String aname = request.getParameter("fullname");
-			//String ano = request.getParameter("ArtistId");
-			//String state = request.getParameter("state");
-			//String city = request.getParameter("city");
-			//String pincode = request.getParameter("pincode");
 			String pno = request.getParameter("mobileno");
 			String email = request.getParameter("email");
 			String pwd = request.getParameter("password");

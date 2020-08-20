@@ -44,7 +44,7 @@ public class Customer extends HttpServlet {
 	  
 
 	  Class.forName(driver).newInstance();  
-	  conn = DriverManager.getConnection(url+dbName,"root", "system");
+	  conn = DriverManager.getConnection(url+dbName,"root", "12345678");
 	  PreparedStatement pst =(PreparedStatement) conn.prepareStatement("insert into artist( email, a_name, state, city, pincode, phone) values(?,?,?,?,?,?)");//try2 is the name of the table  
 
 	 

@@ -67,7 +67,7 @@ public class Signupservlet1 extends HttpServlet {
       
 
       Class.forName(driver).newInstance();  
-      conn = DriverManager.getConnection(url+dbName,"root", "system"); 
+      conn = DriverManager.getConnection(url+dbName,"root", "12345678"); 
      PreparedStatement pst1 =(PreparedStatement) conn.prepareStatement("insert into login values(?,2,?)");//try2 is the name of the table  
 
       
