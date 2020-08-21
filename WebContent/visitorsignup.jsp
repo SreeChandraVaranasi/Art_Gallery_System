@@ -2,154 +2,134 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html >
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>visitor signup</title>
-  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style3.css">
 </head>
-<h2>Online Art Gallery</h2>
-<body background="images/images.jpeg">
- <!-- <form action="Paintings.jsp" onsubmit="Artist.jsp"> -->
-  <div class="form">
+<body>
 
-      <ul class="tab-group">
-        <li class="tab active"><a href="#signup">Sign Up</a></li>
-        <li class="tab"><a href="#login">Log In</a></li>
-      </ul>
+    <div class="main">
 
-      <div class="tab-content">
-        <div id="signup">
-          <h1>Sign Up for Free</h1>
+        <h1>Sign up</h1>
+        <div class="container">
+            <div class="sign-up-content">
+                <form action="Signupservlet1" method="post" onSubmit="return ValidateEmail()">
+                    <h2 class="form-title">Register</h2>
+					<div class="form-textbox">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" scope="session"  required autocomplete="off" title="Enter Name" />
+                    </div>
+                    <div class="form-textbox">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" scope="session" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required autocomplete="off" title="Enter valid Email" />
+                    </div>
+                    <div class="form-textbox">
+                        <label for="pass">Password</label>
+                        <input type="password" name="password1"/>
+                    </div>
+                    <br>
+                    <div class="form-radio">
+                        <input type="radio" name="member_level" value="artist" checked="checked" id="artist" />
+                        <label for="artist">Artist</label>
 
-          <form action="Signupservlet1" method="post" onSubmit="return ValidateEmail()">>
+                        <input type="radio" name="member_level" value="customer" id="customer" />
+                        <label for="customer">Customer</label>
+                    </div>
 
-          <!-- <div class="top-row"> -->
-            <div class="field-wrap">
-              <label>
-                Emailid<span class="req">*</span>
-              </label>
-              <input type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required autocomplete="off" title="Enter valid Email" />
+                    <div class="form-group">
+                        <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                        <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                    </div>
+
+                    <div class="form-textbox">
+                        <input type="submit" name="submit" id="submit" class="submit" value="Create account" />
+                    </div>
+                </form>
+
+                <p class="loginhere">
+                    Already have an account ?<a href="visitorsignup2.jsp" class="loginhere-link"> Log in</a>
+                </p>
             </div>
-            <div class="field-wrap">
-            <label>
-              set a password<span class="req">*</span>
-            </label>
-            <input type="password" name="password1" required autocomplete="off"/>
-             <select id="Choose" name="Type">
-			    <option value="artist">Artist</option>
-			    <option value="customer">Customer</option>
- 			 </select>
-          </div>
-<!-- 			<input type="submit" class="button button-block" name="submit" value="Get Started"> -->
-          <button type="submit" class="button button-block"/>Get Started</button>
- 
-          </form>
-
         </div>
 
-        <div id="login">
-          <h1>Welcome Back!</h1>
+    </div>
 
-          <form action="LoginServlet" method="post" onSubmit="return ValidateEmail()">>
+    <!-- JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script language = "Javascript">
 
-            <div class="field-wrap">
-            <label>
-              Email<span class="req">*</span>
-            </label>
-            <input type="text"name="email"  scope="session" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required autocomplete="off" title="Enter valid Email"/>
-            
-          </div>
+        function emailcheck(str) {
         
-
-          <div class="field-wrap">
-            <label>
-              Password<span class="req">*</span>
-            </label>
-            <input type="password" name="password" required autocomplete="off"/>
-          </div>
-
-          <p class="forgot"><a href="#">Forgot Password?</a></p>
-
-          <button class="button button-block" type="submit"/>Log In</button>
-
-          </form>
-
-        </div>
-
-      </div><!-- tab-content -->
-
-</div> 
-<!-- /form -->
-
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-  <script  src="js/index.js"></script>
-<script language = "Javascript">
-
-function emailcheck(str) {
-
-var at="@"
-var dot="."
-var lat=str.indexOf(at)
-var lstr=str.length
-var ldot=str.indexOf(dot)
-if (str.indexOf(at)==-1){
-alert("Invalid E-mail ID")
-return false
-}
-
-if (str.indexOf(at)==-1 || str.indexOf(at)==0 || str.indexOf(at)==lstr){
-alert("Invalid E-mail ID")
-return false
-}
-
-if (str.indexOf(dot)==-1 || str.indexOf(dot)==0 || str.indexOf(dot)==lstr){
-alert("Invalid E-mail ID")
-return false
-}
-
-if (str.indexOf(at,(lat+1))!=-1){
-alert("Invalid E-mail ID")
-return false
-}
-
-if (str.substring(lat-1,lat)==dot || str.substring(lat+1,lat+2)==dot){
-alert("Invalid E-mail ID")
-return false
-}
-
-if (str.indexOf(dot,(lat+2))==-1){
-alert("Invalid E-mail ID")
-return false
-}
-
-if (str.indexOf(" ")!=-1){
-alert("Invalid E-mail ID")
-return false
-}
-alert("valid E-mail ID")
-return true 
-}
-
-function ValidateEmail(){
-var emailID=document.frm.txtEmail
-
-if ((emailID.value==null)||(emailID.value=="")){
-alert("Please Enter your Email Address")
-emailID.focus()
-return false
-}
-if (emailcheck(emailID.value)==false){
-emailID.value=""
-emailID.focus()
-return false
-}
-return true
-}
-</script>
-    
-
-</body>
+        var at="@"
+        var dot="."
+        var lat=str.indexOf(at)
+        var lstr=str.length
+        var ldot=str.indexOf(dot)
+        if (str.indexOf(at)==-1){
+        alert("Invalid E-mail ID")
+        return false
+        }
+        
+        if (str.indexOf(at)==-1 || str.indexOf(at)==0 || str.indexOf(at)==lstr){
+        alert("Invalid E-mail ID")
+        return false
+        }
+        
+        if (str.indexOf(dot)==-1 || str.indexOf(dot)==0 || str.indexOf(dot)==lstr){
+        alert("Invalid E-mail ID")
+        return false
+        }
+        
+        if (str.indexOf(at,(lat+1))!=-1){
+        alert("Invalid E-mail ID")
+        return false
+        }
+        
+        if (str.substring(lat-1,lat)==dot || str.substring(lat+1,lat+2)==dot){
+        alert("Invalid E-mail ID")
+        return false
+        }
+        
+        if (str.indexOf(dot,(lat+2))==-1){
+        alert("Invalid E-mail ID")
+        return false
+        }
+        
+        if (str.indexOf(" ")!=-1){
+        alert("Invalid E-mail ID")
+        return false
+        }
+        alert("valid E-mail ID")
+        return true 
+        }
+        
+        function ValidateEmail(){
+        var emailID=document.frm.txtEmail
+        
+        if ((emailID.value==null)||(emailID.value=="")){
+        alert("Please Enter your Email Address")
+        emailID.focus()
+        return false
+        }
+        if (emailcheck(emailID.value)==false){
+        emailID.value=""
+        emailID.focus()
+        return false
+        }
+        return true
+        }
+        </script>
+            
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
- 

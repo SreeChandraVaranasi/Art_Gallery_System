@@ -13,9 +13,7 @@
   <div class="form">
         <div id="signup">
           <h1>Sign Up for Free</h1>
-
           <form action="SignupServlet" method="post">
-
           <!-- <div class="top-row"> -->
             <div class="field-wrap">
               <label>
@@ -23,9 +21,6 @@
               </label>
               <input type="text" name="fullname" pattern="[A-Za-z.\s]{1,}"required autocomplete="off" title="Fullname should only contain letters. e.g. john" />
             </div>
-            
-            
-
 
           <div class="field-wrap">
             <label>
@@ -40,8 +35,6 @@
             </label>
             <input type="password" name="password" required autocomplete="off"/>
           </div>
-          
-          
 
           <button type="submit" class="button button-block"/>Get Started</button>
 

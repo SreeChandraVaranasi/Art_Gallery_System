@@ -6,23 +6,41 @@
 <%-- <%@ taglib uri="/WEB-INF/tld/liferay-portlet.tld" prefix="portlet" %>
 <portlet:defineObjects /> --%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html >
+<!DOCTYPE html>
+<html lang="en" >
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Online Art Gallery</title>
-<link rel="stylesheet" href="css/frontpage.css">
-	<script type="text/javascript" href="js/frontpage.js"></script>
- -<link rel="shortcut icon" href="favicon.ico">
+  <meta charset="UTF-8">
+  <title>ASVS ART GALLERY</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
+<link rel="stylesheet" href="css/homepage.css">
+
 </head>
-<body background="art_gallery_wall_background_wallpaper.jpg">
-<h2>Online Art Gallery</h2>
-<div class="navbar">
-  <a href="frontpage.jsp">Home</a>
-  <a href ="visitorsignup.jsp">SignUp/Login</a>
-</div>
-<br>
-<br>
+<body  background="art_gallery_wall_background_wallpaper.jpg">
+
+<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="./" class="navbar-brand">AVSV ART GALLERY</a>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="frontpage.jsp">Home</a>
+        </li>
+        <li>
+          <a href="visitorsignup.jsp">SignUp/Login</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
 <style>
 * {box-sizing:border-box}
@@ -103,10 +121,6 @@ body {
 }
 </style>
 
-
-<!-- <h2>Automatic Slideshow</h2>
-<p>Change image every 2 seconds:</p>
- -->
 <div class="slideshow-container">
 
 <div class="mySlides fade">
@@ -157,5 +171,7 @@ function showSlides() {
     setTimeout(showSlides, 2000); // Change image every 2 seconds
 }
 </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js'></script>
 </body>
 </html>

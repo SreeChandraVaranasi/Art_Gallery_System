@@ -26,27 +26,54 @@
 	<link rel="stylesheet" href="css/style1.css">
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
+	<style>
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {background-color: #4CAF50;} /* Green */
+</style>
+	
 
 </head>
 <body>
-<div class="navbar">
-  <a href="frontpage.jsp">Home</a>
-  <a href="likes.jsp">Paintings</a>
-  <!--  <a href="My_profile.jsp">My Profile</a>
-    <a href="gallery_option.jsp">Gallery options</a>
-     <a href="upload_paintings.jsp">Upload Paintings</a> -->
-     <a href="search.jsp">Search</a>
-      <a href="frontpage.jsp">Logout</a>
-       <a href="#" class="navbar1"><% HttpSession httpSession=request.getSession();
-			String id = request.getParameter("email");
-			httpSession.setAttribute("login1",id );
-			if(id != null) {
-				out.println("hii "+httpSession.getAttribute("login1"));
-			}
-			String a = (String)httpSession.getAttribute("login1");%>
+<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+        <div class="container">
+          <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a href="./" class="navbar-brand">AVSV ART GALLERY</a>
+          </div>
+          <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">Home</a></li>
+              
+              <li><a href="frontpage.jsp">Logout</a></li>
+              <li><a href="#"> <% HttpSession httpSession=request.getSession();
+                String id = request.getParameter("email");
+                httpSession.setAttribute("login1",id );
+                if(id != null) {
+                    out.println("Welcome "+httpSession.getAttribute("login1"));
+                }
+                String a = (String)httpSession.getAttribute("login1");
+%></a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
 
-     
-</div>
 <form action="likes1.jsp" method="post"  onsubmit="index.jsp">
 <div id="fh5co-main">
 		<div class="container">
@@ -81,9 +108,11 @@ try {
 	        		<div class="image-popup fh5co-desc"><%= rs.getString("title") %>
 	        		
 	        		</div>
-	        		<a href="likes1.jsp?value=<%= rs.getString("title")%>">Like</a>
-        		</div>
-        		</div>
+	        		<div class="image-popup fh5co-desc"><%= "Rs"+rs.getString("cost") %></div>
+        				<form>
+	        				<button type="submit" class="button button1" formaction="checkout.jsp">Buy Now</button>
+	        			</form>
+        			</div>
    <%}
     rs.close();
     // rs1.close();
