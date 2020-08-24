@@ -50,16 +50,10 @@ public class LoginServlet extends HttpServlet {
             Class.forName(driver).newInstance();
             conn = DriverManager.getConnection(url + dbName, userName, password);
 
-           // pst = conn.prepareStatement("select * from login");
-           // pst.setString(1, name);
-            //pst.setString(2, pass);
-           // String user = pst.setString(3, );
-
-            //rs = pst.executeQuery();
-             st = conn.createStatement();
+            st = conn.createStatement();
             rs = st.executeQuery(query);
             rs.next();
-            String user = rs.getString(2);
+            String user = rs.getString(1);
             System.out.println("hellllloooooo"+user);
         //String user;
             if(LoginDao.validate(n,"0",p)){
@@ -69,7 +63,6 @@ public class LoginServlet extends HttpServlet {
                  rd.forward(request,response);  
             }else if(LoginDao.validate(n, "1", p)){
             	System.out.println("artist");
-
             	out.print("You are on artist page");
             	 RequestDispatcher rd=request.getRequestDispatcher("Artist.jsp");  
                  rd.forward(request,response);  
@@ -94,7 +87,7 @@ public class LoginServlet extends HttpServlet {
         }  */
         else{  
             out.print("<p style=\"color:red\">Sorry username or password error</p>");  
-            RequestDispatcher rd=request.getRequestDispatcher("index.jsp");  
+            RequestDispatcher rd=request.getRequestDispatcher("visitorsignup2.jsp");  
             rd.include(request,response);  
         }  
             

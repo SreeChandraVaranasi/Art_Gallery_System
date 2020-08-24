@@ -5,46 +5,55 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
 <title>Artist_page</title>
-<link type="text/css" rel="stylesheet" href="css/frontpage.css"/>
-<link rel="shortcut icon" href="favicon.ico">
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-	
-		<link rel="stylesheet" href="css/animate.css">
-	<link rel="stylesheet" href="css/icomoon.css">
-	<link rel="stylesheet" href="css/magnific-popup.css">
-	<link rel="stylesheet" href="css/salvattore.css">
-	<link rel="stylesheet" href="css/style1.css">
-	<script src="js/modernizr-2.6.2.min.js"></script>
+<link type="text/css" rel="stylesheet" href="css/homepage.css"/>
+
+
 </head>
-<h1>Online Art Gallery</h1>
 <body>
 
- <div class="navbar">
-  <a href="frontpage.jsp">Home</a>
-  <a href="About_us.jsp">About Us</a>
-   <a href="My_profile.jsp">My Profile</a>
-   <a href="Exhibition.jsp">Exhibitions</a>
-    <a href="gallery_option.jsp">Gallery options</a>
-     <a href="upload_paintings.jsp">Upload Paintings</a>
-      <a href="frontpage.jsp">Logout</a>
-      <a href="#" class="navbar1"><% HttpSession httpSession=request.getSession();
-      								String id = request.getParameter("email");
-      								httpSession.setAttribute("login1",id );
-      								out.println("hii "+httpSession.getAttribute("login1"));
-      								String a = (String)httpSession.getAttribute("login1");
+ <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+        <div class="container">
+          <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a href="./" class="navbar-brand">AVSV ART GALLERY</a>
+          </div>
+          <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav navbar-right">
+            <li><a href="Artist.jsp">My Gallery</a></li>
+              <li><a href="upload_paintings.jsp">Upload Paintings</a></li>
+              <li><a href="frontpage.jsp">Logout</a></li>
+              <li><a href="#"> <% 
+              	HttpSession httpSession=request.getSession();
+                String id = request.getParameter("email");
+              /*   if(id==""){
+                	session.getAttribute(id);
+                } */
+                httpSession.setAttribute("login1",id );
+                out.println("Welcome "+httpSession.getAttribute("login1"));
+%></a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <br>
+      <br>
       
-      
-      %></a>  
-</div>
-<div id="fh5co-main">
+ <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">Uploaded Paintings</h1>
+
+<!-- <div id="fh5co-main">
 		<div class="container">
 
 			<div class="row">
 
-        <div id="fh5co-board" data-columns>
+        <div id="fh5co-board" data-columns> -->
         <%
 String url = "jdbc:mysql://localhost:3306/";
 String dbName = "mydb";
@@ -52,25 +61,33 @@ String driver = "com.mysql.jdbc.Driver";
 String userName = "root";
 String password = "system";
 String a_id = null;
-String query= "select * from painting where email = '" + a + "'";
+String query= "select * from painting where email = '" + id + "'";
 try {
     Class.forName(driver).newInstance();
     Connection conn = DriverManager.getConnection(url + dbName, userName, password);
 	
     Statement st = conn.createStatement();
-    ResultSet rs = st.executeQuery(query);
-    
+    ResultSet rs = st.executeQuery(query); 
+  	 %>
+  <div class="container">
+  <hr class="mt-2 mb-5">
+ <div class="row text-center text-lg-left">
+
+    <%
     while(rs.next()){
-    	%>
-    	<div class="item">
-        		<div class="animate-box">
-	        		<a href=<%= rs.getString("url") %> class="image-popup fh5co-board-img"><img src=<%= rs.getString("url") %> alt="Free HTML5 Bootstrap template"></a>
-	        		<div class="image-popup fh5co-desc"><%= rs.getString("title") %>
-	        		
-	        		</div>
-        		</div>
-        		</div>
-   <%} %>
+    	%> 
+     	<div class="col-lg-3 col-md-4 col-6">
+     		<a href=<%=rs.getString("url")%> class="d-block mb-4 h-100">
+			<img class="img-fluid img-thumbnail" src=<%=rs.getString("url")%> alt="">
+			</a>
+			<div class="image-popup fh5co-desc"><%=rs.getString("title")%></div>
+			<div class="image-popup fh5co-desc"><%="Rs" + rs.getString("cost")%></div>
+												
+        </div>
+         
+       <%} %>
+</div>
+</div>
    <%rs.close();
    st.close();
    conn.close();
@@ -78,51 +95,25 @@ try {
    catch (Exception e) {
    }
    %>
-        	
-        	
-        <!-- <<div class="item">
-        		<div class="animate-box">
-	        		<a href="images/img_3.jpg" class="image-popup fh5co-board-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxlVqMSd30Qah-lV4zXbDimmEc0-BYovuJMdDvvAhNIU6l79Nd" alt="Free HTML5 Bootstrap template"></a>
-	        		<div class="fh5co-desc">Optio commodi quod vitae, vel, officiis similique quaerat odit dicta.</div>
-        		</div>
-        	</div>
-              	<div class="item">
-        		<div class="animate-box">
-	        		<a href="images/img_30.jpg" class="image-popup fh5co-board-img"><img src="images/img_30.jpg" alt="Free HTML5 Bootstrap template"></a>
-	        		<div class="fh5co-desc">Adipisci consequuntur ipsa fugit perspiciatis eligendi. Omnis blanditiis, totam placeat.</div>
-        		</div>
-        	</div> -->
+
         </div>
         </div>
        </div>
 	</div>
 
-	<!-- <footer id="fh5co-footer">
-		
-		<div class="container">
-			<div class="row row-padded">
-				<div class="col-md-12 text-center">
-					<p class="fh5co-social-icons">
-						<a href="#"><i class="icon-twitter"></i></a>
-						<a href="#"><i class="icon-facebook"></i></a>
-						<a href="#"><i class="icon-instagram"></i></a>
-						<a href="#"><i class="icon-dribbble"></i></a>
-						<a href="#"><i class="icon-youtube"></i></a>
-					</p>
-					<p><small>&copy; Hydrogen Free HTML5 Template. All Rights Reserved. <br>Designed by: <a href="http://freehtml5.co/" target="_blank">FREEHTML5.co</a> | Images by: <a href="http://pexels.com" target="_blank">Pexels</a> </small></p>
-				</div>
-			</div>
-		</div>
-	</footer>
 
- --> 
+	<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+	<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js'></script>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery.easing.1.3.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.waypoints.min.js"></script>
 	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="js/salvattore.min.js"></script>
-	<script src="js/main1.js"></script>
+    <script src="js/main1.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js'></script>
 
 </body>
 </html>

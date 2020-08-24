@@ -5,65 +5,78 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="css/frontpage.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
 <title>Select_paintings</title>
+<link type="text/css" rel="stylesheet" href="css/homepage.css"/>
+
 </head>
-<!-- <h1>Online Art Gallery</h1> -->
 <body>
 <h2>Online Art Gallery</h2>
 
- <div class="navbar">
-  <a href="frontpage.jsp">Home</a>
-  <a href="About_us.jsp">About Us</a>
-   <a href="My_profile.jsp">My Profile</a>
-   <a href="Exhibition.jsp">Exhibitions</a>
-    <a href="gallery_option.jsp">Gallery options</a>
-     <a href="upload_paintings.jsp">Upload Paintings</a>
-      <a href="frontpage.jsp">Logout</a>
-      <a href="#" class="navbar1">
-      									<% HttpSession httpSession=request.getSession();
-      								out.println("hii "+httpSession.getAttribute("login1"));
-      								String a1 = (String)session.getAttribute("login1");
-      								%>
- </a>  
-      </div>
+
+ <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+        <div class="container">
+          <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a href="./" class="navbar-brand">AVSV ART GALLERY</a>
+          </div>
+          <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="upload_paintings.jsp">Upload Paintings</a></li>
+              <li><a href="frontpage.jsp">Logout</a></li>
+            <li><a href="#"> <% 
+                out.println("Welcome "+session.getAttribute("login1"));
+          
+%></a></li>
+            </ul>
+          </nav>
+        </div>
+  </header>
+      
         <!-- <form method="post" action="upload_paintings.jsp" >  -->  
       <div class="user">
-    <header class="user__header">
-        <h2 class="user__title">Upload Painting Info...</h2>
-    </header>
+		    <header class="user__header">
+		        <h2 class="user__title">Upload Painting Info...</h2>
+		    </header>
     
     <form action="upload_paintings.jsp" method="post" class="form" >
-              <div class="form__group">
-            <input type="text" placeholder="Title" name="title" required = "required" class="form__input" />
-        </div>
+	              <div class="form__group">
+	            	<input type="text" placeholder="Title" name="title" required = "required" class="form__input" />
+	       		  </div>
         
-        <div class="form__group">
-            <input type="text" placeholder="Year" name="year" required = "required" pattern="[0-9]{4}" class="form__input" title="enter valid year"/>
-        </div>
+		        <div class="form__group">
+		            <input type="text" placeholder="Year" name="year" required = "required" pattern="[0-9]{4}" class="form__input" title="enter valid year"/>
+		        </div>
         
-        <div class="form__group">
-            <input type="text" placeholder="ImageUrl" name="url"required = "required" class="form__input" />
-        </div>
+		        <div class="form__group">
+		            <input type="text" placeholder="ImageUrl" name="url"required = "required" class="form__input" />
+		        </div>
         
-        <div class="form__group">
-<!--             <input type="text" placeholder="ImageUrl" name="url" class="form__input" />
- -->         <select name="ptype" class="form__input" placeholder="ImageUrl" required = "required" >
-      		<option value=" ">Please select</option> 
-      		<option>Abstract</option>
-     		<option>Oil painting</option>
-      		<option >Watercolour</option>
-      		<option >Postercolour</option>
-      		<option >Acrylic</option>
-       		<option >Pencil sketch</option>
-      
-    </select>
-        </div>
-        
-        <button class="btn" type="submit" name="Upload">Upload</button>
-    
-</div>
+		        <div class="form__group">
+		         <select name="ptype" class="form__input" placeholder="ImageUrl" required = "required" >
+		      		<option value=" ">Please select</option> 
+		      		<option>Abstract</option>
+		     		<option>Oil painting</option>
+		      		<option >Watercolour</option>
+		      		<option >Postercolour</option>
+		      		<option >Acrylic</option>
+		       		<option >Pencil sketch</option>
+		      	</select>
+		        </div>
+		        <div class="form__group">
+		            <input type="text" placeholder="Price" name="cost" required = "required"  class="form__input"/>
+		        </div>
+        		<button class="btn" type="submit" name="Upload">Upload</button>
+    </form>
+		</div>
+
 <% Connection conn=null;
         String url="jdbc:mysql://localhost:3306/";
     String dbName="mydb";
@@ -81,38 +94,33 @@ if(request.getParameter("Upload")!= null){
   String year = request.getParameter("year");  
   String iurl = request.getParameter("url");  
   String type= request.getParameter("ptype");  
+  String cost= request.getParameter("cost");  
   String email= (String)session.getAttribute("login1");
-  String id = "abc";
+/*   String id = "abc"; */
   
-  /* if (title==null)
-      title="";
-  if (year==null)
-      year="";
-  if (url==null)
-      url="" */; 
-  /* if (year==null)
-      year=""; */
+ 
   Class.forName(driver).newInstance(); 
   
    
   conn = DriverManager.getConnection(url+dbName,"root", "system");
-  PreparedStatement pst =(PreparedStatement) conn.prepareStatement("insert into painting values(?,?,?,?,?,?)");//try2 is the name of the table  
+PreparedStatement pst =(PreparedStatement) conn.prepareStatement("insert into painting values(?,?,?,?,?,?)");//try2 is the name of the table  
  
   
-  pst.setString(1,title);  
-  pst.setString(2, id);
-  pst.setString(3,year);        
-  pst.setString(4,iurl);
-  pst.setString(5,type);
-  pst.setString(6,email);
+  pst.setString(1,iurl);  
+  pst.setString(2, title);
+  pst.setString(3,year);
+  pst.setString(4,cost);
+  pst.setString(5,email);
+  pst.setString(6,type);
    
   int i = pst.executeUpdate();
   //conn.commit(); 
   String msg=" ";
   if(i!=0){  
     msg="Record has been inserted";
-   out.println("<font size='6' color=blue>" + msg + "</font>"); 
-    RequestDispatcher rd=request.getRequestDispatcher("Artist1.jsp");  
+   out.println("<font size='6' color=blue>" + msg + "</font>");
+ 	
+    RequestDispatcher rd=request.getRequestDispatcher("Artist.jsp");
     rd.forward(request,response);  
 
 
@@ -129,7 +137,8 @@ catch (Exception e){
   out.println(e);  
 }  
 
-%>" </form>
+%>
+
 
 <style>
 $font-family:   "Roboto";
@@ -265,6 +274,10 @@ body {
     }
 }
 </style>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js'></script>
 <script>
 $('.btn').on('click', function () {
     $('.form').addClass('form--no');
